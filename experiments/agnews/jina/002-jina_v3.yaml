@@ -1,0 +1,41 @@
+experiment_name: "002_binary_quantized_1024_lr_"
+
+dataset:
+  name: "agnews"
+  train: "agnews/1024/binary/train_binary_1024"
+  test: "agnews/1024/binary/test_binary_1024"
+  label_column: "label"
+  labels: ['Business', 'Sci/Tech', 'Sports', 'World']
+  
+embeddings:
+  type: "jina"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  truncate_dim: 1024
+  quantization: binary
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: true
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    dummty: yes
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 1000
+    random_state: 42
+    penalty: 'l2'
+    solver: 'lbfgs'
+    C: 1
+    tol: 0.00001tr
+    
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/agnews/jina/1024/002_binary_quantized_1024_lr"

@@ -1,0 +1,41 @@
+experiment_name: "300_lr" # Experiment name
+
+dataset:
+  name:   "echr" # Dataset name
+  train:  "echr/train" # Path to training data
+  test:   "echr/test" # Path to test data
+  label_column: "label" # Column name for labels
+  labels: ["Violation", "No-violation"] # List of labels
+
+embeddings:
+  type: "fasttext" # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: true
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: false
+
+  params:
+    pre_trained: false # Options: true, false
+    fine_tune_path: null # Options: null, path to fine-tune file. If pre_trained is true, this will be used to fine-tune the model 
+    vector_size: 300 # Size of the word vectors
+    window: 2 # Maximum distance between the current and predicted word within a sentence
+    min_count: 2 # Ignores all words with total frequency lower than this
+    epochs: 10 # Number of epochs to train the model
+
+model:
+  classifier: "LogisticRegression"  # Options: LogisticRegression, SVM, XGBClassifier
+  params:
+    max_iter: 5000
+    C: 1
+    grid_search: false
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/echr/fasttext/300_lr"

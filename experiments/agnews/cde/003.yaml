@@ -1,0 +1,27 @@
+experiment_name: "003_svm"
+
+dataset:
+  name:   "agnews"
+  train:  "agnews/train"
+  test:   "agnews/test"
+  label_column: "label"
+  labels: ['Business', 'Sci/Tech', 'Sports', 'World']
+
+embeddings:
+  type: "cde"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+
+model:
+  classifier: "SVM"  
+  params:
+    max_iter: 2000
+    random_state': 42
+    C: 0.7
+    tol : 0.0005 
+    normalize: True
+    
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/agnews/cde/003_svm"

@@ -1,0 +1,44 @@
+experiment_name: "104_lr_"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/train"
+  test:   "pubmed20k/test"
+  #val:    "pubmed20k/val"
+  label_column: "label"
+  labels: ['BACKGROUND','RESULTS','CONCLUSIONS','METHODS','OBJECTIVE']
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params: 
+    vector_size: 300  # Reduced from 1000 - 300 is often sufficient and more efficient
+    window: 8  # Slightly larger window to capture more context
+    min_count: 5  # Increased to focus on more meaningful words
+    epochs: 30  # Increased for better convergence
+    dm: 0  # Added - use PV-DM (Distributed Memory) model (1) or PV-DBOW (0)
+    pre_process:
+      lower: true
+      remove_punctuation: true
+      remove_stopwords: true
+      remove_numbers: false  
+      remove_special_characters: true
+      remove_extra_whitespace: true
+      lemmatize: true
+      stem: false  
+
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 4000
+    random_state: 42
+    C: 0.9
+    grid_search: False
+    tol: 0.00001
+    normalize: True
+    
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/fasttext/104_lr"

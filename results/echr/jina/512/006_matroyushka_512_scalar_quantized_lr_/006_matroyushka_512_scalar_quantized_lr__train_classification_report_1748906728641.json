@@ -1,0 +1,37 @@
+{
+    "0": {
+        "precision": 0.8712616822429906,
+        "recall": 0.8154384430352066,
+        "f1-score": 0.8424262961707896,
+        "support": 4573.0
+    },
+    "1": {
+        "precision": 0.854932966655208,
+        "recall": 0.9002714932126696,
+        "f1-score": 0.8770166622586617,
+        "support": 5525.0
+    },
+    "accuracy": 0.8618538324420677,
+    "macro avg": {
+        "precision": 0.8630973244490994,
+        "recall": 0.8578549681239381,
+        "f1-score": 0.8597214792147256,
+        "support": 10098.0
+    },
+    "weighted avg": {
+        "precision": 0.8623276206840186,
+        "recall": 0.8618538324420677,
+        "f1-score": 0.8613520015218981,
+        "support": 10098.0
+    },
+    "roc_auc": null,
+    "model": "LogisticRegression",
+    "params": {
+        "max_iter": 1500,
+        "random_state": 42,
+        "penalty": "l2",
+        "solver": "lbfgs",
+        "C": 0.7
+    },
+    "mode": "training"
+}

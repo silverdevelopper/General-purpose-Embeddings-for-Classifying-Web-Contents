@@ -1,0 +1,40 @@
+experiment_name: "001_lr"
+
+dataset:
+  name: "patent_balanced"
+  train: "patent_balanced/patent90k_balanced_train"
+  test: "patent_balanced/patent90k_balanced_test"
+  #val: "patent_balanced/patent90k_balanced_val"
+  label_column: "label"
+  labels: ['a','b','c','d','e','f','g','h','y']
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params: 
+    vector_size: 500
+    window: 8
+    min_count: 5
+    epochs: 20
+  pre_process:
+    lower: true
+    remove_punctuation: false
+    remove_stopwords: true
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: false
+
+model:
+  classifier: "LogisticRegression"  
+  params: 
+    max_iter: 3500
+    C: 0.9
+    tol: 0.00005
+
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/patent_balanced/fasttext/001_lr"

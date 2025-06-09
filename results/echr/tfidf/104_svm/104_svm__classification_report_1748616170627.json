@@ -1,0 +1,38 @@
+{
+    "0": {
+        "precision": 0.8847517730496454,
+        "recall": 0.7231884057971014,
+        "f1-score": 0.79585326953748,
+        "support": 690.0
+    },
+    "1": {
+        "precision": 0.7659313725490197,
+        "recall": 0.9057971014492754,
+        "f1-score": 0.8300132802124834,
+        "support": 690.0
+    },
+    "accuracy": 0.8144927536231884,
+    "macro avg": {
+        "precision": 0.8253415727993325,
+        "recall": 0.8144927536231884,
+        "f1-score": 0.8129332748749818,
+        "support": 1380.0
+    },
+    "weighted avg": {
+        "precision": 0.8253415727993326,
+        "recall": 0.8144927536231884,
+        "f1-score": 0.8129332748749817,
+        "support": 1380.0
+    },
+    "roc_auc": null,
+    "model": "SVM",
+    "params": {
+        "max_iter": 1000,
+        "random_state": 42,
+        "C": 0.9,
+        "grid_search": false,
+        "tol": 0.001,
+        "normalize": false
+    },
+    "mode": "training"
+}

@@ -1,0 +1,37 @@
+experiment_name: "015_matroyushka_64_scalar_quantized_lr_"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20news/64/scalar/20_newsgroups_train_scalar_64"
+  test: "20news/64/scalar/20_newsgroups_test_scalar_64"
+  label_column: "label"
+  labels: ['alt.atheism','comp.graphics','comp.os.mswindows.misc','comp.sys.ibm.pc.hardware','comp.sys.mac.hardware','comp.windows.x','misc.forsale','rec.autos','rec.motorcycles','rec.sport.baseball','rec.sport.hockey','sci.crypt','sci.electronics','sci.med','sci.space','soc.religion.christian','talk.politics.guns','talk.politics.mideast','talk.politics.misc','talk.religion.misc']
+
+embeddings:
+  type: "jina"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  truncate_dim: 64
+  quantization: scalar # int8
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: true
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    dummty: yes
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 200
+    random_state: 42
+    C: 0.9
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/20news/jina/64/015_matroyushka_64_scalar_quantized_lr_"

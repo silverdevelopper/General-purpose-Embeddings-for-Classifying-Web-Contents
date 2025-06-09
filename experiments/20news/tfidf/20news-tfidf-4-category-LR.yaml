@@ -1,0 +1,24 @@
+experiment_name: "20_news_4_cat_tfidf_LR"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20_newsgroups_3_categories_train"
+  test: "20_newsgroups_3_categories_test"
+  label_column: "label"
+  categories: ['alt.atheism','talk.religion.misc','comp.graphics','sci.space']
+
+embeddings:
+  type: "tfidf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    max_features: null
+    ngram_range: "1,1"
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 100
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results"

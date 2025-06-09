@@ -1,0 +1,40 @@
+experiment_name: "001_lr_"
+
+dataset:
+  name:   "agnews"
+  train:  "agnews/train"
+  test:   "agnews/test"
+  label_column: "label"
+  labels: ['Business', 'Sci/Tech', 'Sports', 'World']
+
+embeddings:
+  type: "doc2vec"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, cde
+  store_type: "npz"
+  params: 
+    vector_size: 5000
+    window: 5
+    min_count: 2
+    epochs: 20
+
+
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: true
+    remove_numbers: false
+    remove_special_characters: true
+    remove_extra_whitespace: true
+    lemma: true
+    stem: false
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 4000
+    C: 0.9
+    grid_search: false
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/agnews/doc2vec/001_lr_"

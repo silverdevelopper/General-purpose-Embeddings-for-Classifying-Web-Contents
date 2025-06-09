@@ -1,0 +1,27 @@
+experiment_name: "002_svm"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20news/20_newsgroups_train"
+  test: "20news/20_newsgroups_test"
+  label_column: "label"
+  labels: ['alt.atheism','comp.graphics','comp.os.mswindows.misc','comp.sys.ibm.pc.hardware','comp.sys.mac.hardware','comp.windows.x','misc.forsale','rec.autos','rec.motorcycles','rec.sport.baseball','rec.sport.hockey','sci.crypt','sci.electronics','sci.med','sci.space','soc.religion.christian','talk.politics.guns','talk.politics.mideast','talk.politics.misc','talk.religion.misc']
+
+embeddings:
+  type: "cde"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+
+model:
+  classifier: "SVM"  
+  params:
+    max_iter: 1000
+    random_state: 42
+    C: 0.9
+    grid_search: False
+    tol: 0.001
+    normalize: False
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/20news/cde/002_svm"

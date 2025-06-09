@@ -1,0 +1,29 @@
+experiment_name: "000_lr"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/train"
+  test:   "pubmed20k/test"
+  label_column: "label"
+  labels: ['BACKGROUND','RESULTS','CONCLUSIONS','METHODS','OBJECTIVE']
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params:
+    vector_size: 100
+    window: 3
+    min_count: 1
+    epochs: 20
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 500
+    C: 0.9
+    grid_search: false
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/fasttext/000_fasttext100_lr"

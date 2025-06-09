@@ -1,0 +1,40 @@
+experiment_name: "002_svm" # Experiment name
+
+dataset:
+  name:   "echr" # Dataset name
+  train:  "echr/train" # Path to training data
+  test:   "echr/test" # Path to test data
+  label_column: "label" # Column name for labels
+  labels: ["Violation", "No-violation"] # List of labels
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params: 
+    vector_size: 1000
+    window: 5
+    min_count: 3
+    epochs: 50
+  pre_process:
+    lower: true
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: false
+
+model:
+  classifier: "SVM"  
+  params: 
+    max_iter: 3500
+    C: 10
+    normalize: True
+
+
+    
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/echr/fasttext/002_svm"

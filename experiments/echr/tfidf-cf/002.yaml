@@ -1,0 +1,26 @@
+experiment_name: "002_tfidf_cf_lr_"
+
+dataset:
+  name:   "echr"
+  train:  "echr/train"
+  test:   "echr/test"
+  #val:    "echr/val"
+  label_column: "label"
+  labels: ["Violation", "No-violation"]
+
+embeddings:
+  type: "tfidf_cf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    max_features: 15000
+    ngram_range: "1,3"
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 4000
+    C: 1
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/echr/tfidfcf/002_tfidf_cf_lr"

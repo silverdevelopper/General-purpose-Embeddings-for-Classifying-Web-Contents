@@ -1,0 +1,32 @@
+experiment_name: "fattext_4_category_LR"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20_newsgroups_3_categories_train"
+  test: "20_newsgroups_3_categories_test"
+  label_column: "label"
+  categories: ['alt.atheism','talk.religion.misc','comp.graphics','sci.space']
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params:
+    vector_size: 1000
+    window: 8
+    min_count: 3
+    epochs: 20
+
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    # learning_rate: 0.01
+    # max_depth: 5
+    # n_estimators: 200
+    # num_class: 20
+    # eval_metric: "mlogloss" 
+    # objective: "multi:softmax"
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results"

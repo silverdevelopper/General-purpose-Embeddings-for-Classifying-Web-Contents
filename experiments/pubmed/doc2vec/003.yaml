@@ -1,0 +1,40 @@
+experiment_name: "003_lr_dbow_"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/train"
+  test:   "pubmed20k/test"
+  label_column: "label"
+  labels: ['BACKGROUND','RESULTS','CONCLUSIONS','METHODS','OBJECTIVE']
+
+embeddings:
+  type: "doc2vec"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, cde
+  store_type: "npz"
+  params: 
+    vector_size: 5000
+    window: 5
+    min_count: 2
+    epochs: 20
+
+
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: true
+    remove_numbers: false
+    remove_special_characters: true
+    remove_extra_whitespace: true
+    lemma: true
+    stem: false
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 3000
+    C: 1
+
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/doc2vec/003_dbow_lr"

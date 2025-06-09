@@ -1,0 +1,28 @@
+experiment_name: "experiment_20news_bert"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20_newsgroups_train"
+  test: "20_newsgroups_test"
+  label_column: "label"
+
+embeddings:
+  type: "hf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params:
+    model_name: "bert-base-uncased"
+
+model:
+  classifier: "xgboost"  
+  params:
+    learning_rate: 0.06
+    max_depth: 7
+    n_estimators: 543
+    num_class: 20
+    eval_metric: "mlogloss" 
+    objective: "multi:softmax"
+    #gemma: 1
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results"

@@ -1,0 +1,26 @@
+experiment_name: "pubmed20k_tfidf_lr"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/train"
+  test:   "pubmed20k/test"
+  # val:    "pubmed20k/val"
+  label_column: "label"
+  labels: ['METHODS','RESULTS','CONCLUSIONS','BACKGROUND','OBJECTIVE']
+
+embeddings:
+  type: "tfidf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    ngram_range: "1,3"
+    min_df: 0.001
+    max_df: 0.5
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 1000
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/000_tfidf_lr"

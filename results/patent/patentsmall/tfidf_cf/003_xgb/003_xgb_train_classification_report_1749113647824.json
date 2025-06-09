@@ -1,0 +1,80 @@
+{
+    "0": {
+        "precision": 0.9110617009449694,
+        "recall": 0.9070282235749861,
+        "f1-score": 0.9090404880754298,
+        "support": 3614.0
+    },
+    "1": {
+        "precision": 0.8512534818941504,
+        "recall": 0.9103366100685135,
+        "f1-score": 0.8798042320426083,
+        "support": 3357.0
+    },
+    "2": {
+        "precision": 0.9397759103641457,
+        "recall": 0.9590281086231539,
+        "f1-score": 0.9493044093374204,
+        "support": 2099.0
+    },
+    "3": {
+        "precision": 1.0,
+        "recall": 0.9509803921568627,
+        "f1-score": 0.9748743718592965,
+        "support": 204.0
+    },
+    "4": {
+        "precision": 0.9904610492845787,
+        "recall": 0.8836879432624114,
+        "f1-score": 0.9340329835082459,
+        "support": 705.0
+    },
+    "5": {
+        "precision": 0.9586725109580463,
+        "recall": 0.8849710982658959,
+        "f1-score": 0.9203486624586715,
+        "support": 1730.0
+    },
+    "6": {
+        "precision": 0.8813589156838585,
+        "recall": 0.9258505917159763,
+        "f1-score": 0.9030570835963567,
+        "support": 5408.0
+    },
+    "7": {
+        "precision": 0.8973932334997227,
+        "recall": 0.9122345423792521,
+        "f1-score": 0.9047530288909599,
+        "support": 5321.0
+    },
+    "8": {
+        "precision": 0.8611111111111112,
+        "recall": 0.7259953161592506,
+        "f1-score": 0.7878017789072427,
+        "support": 2562.0
+    },
+    "accuracy": 0.89664,
+    "macro avg": {
+        "precision": 0.9212319904156203,
+        "recall": 0.8955680918007002,
+        "f1-score": 0.907001893186248,
+        "support": 25000.0
+    },
+    "weighted avg": {
+        "precision": 0.8972475249451269,
+        "recall": 0.89664,
+        "f1-score": 0.8958883051894098,
+        "support": 25000.0
+    },
+    "roc_auc": null,
+    "model": "XGBClassifier",
+    "params": {
+        "learning_rate": 0.1,
+        "max_depth": 5,
+        "n_estimators": 300,
+        "num_class": 9,
+        "eval_metric": "mlogloss",
+        "objective": "multi:softmax"
+    },
+    "mode": "training"
+}

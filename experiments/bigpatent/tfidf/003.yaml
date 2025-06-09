@@ -1,0 +1,42 @@
+experiment_name: "003_xgb"
+
+dataset:
+  name: "patentsmall"
+  train: "patent/patent_train"
+  test: "patent/patent_test"
+  val: "patent/patent_validation"
+  label_column: "label"
+  labels: ['a','b','c','d','e','f','g','h','y']
+
+embeddings:
+  type: "tfidf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  pre_process:
+    lower: true
+    remove_punctuation: false
+    remove_stopwords: true
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: true
+    stem: false
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    max_features: 20000
+    ngram_range: "1,3"
+
+model:
+  classifier: "XGBClassifier"  
+  params:
+    learning_rate: 0.1
+    max_depth: 5
+    n_estimators: 300
+    num_class: 9
+    eval_metric: "mlogloss" 
+    objective: "multi:softmax"
+
+    
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/patent/patentsmall/tfidf/003_xgb"

@@ -1,0 +1,29 @@
+experiment_name: "001_pubmed20k_doc2vec_lr"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/train"
+  test:   "pubmed20k/test"
+  val:    "pubmed20k/val"
+  label_column: "label"
+  labels: ['BACKGROUND','RESULTS','CONCLUSIONS','METHODS','OBJECTIVE']
+
+embeddings:
+  type: "doc2vec"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    vector_size: 1000
+    window: 5
+    min_count: 1
+    epochs: 40
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 500
+    C: 10
+
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/001_doc2vec_lr"

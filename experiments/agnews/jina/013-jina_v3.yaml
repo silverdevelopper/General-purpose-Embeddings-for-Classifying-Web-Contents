@@ -1,0 +1,37 @@
+experiment_name: "013_matroyushka_64_lr_"
+
+dataset:
+  name: "agnews"
+  train: "agnews/64/train64"
+  test: "agnews/64/test64"
+  label_column: "label"
+  labels: ['Business', 'Sci/Tech', 'Sports', 'World']
+
+embeddings:
+  type: "jina"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  truncate_dim: 64
+  #quantization: scalar # int8
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: true
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    dummty: yes
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 200
+    random_state: 42
+    C: 0.9
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/agnews/jina/64/013_matroyushka_64_lr_"

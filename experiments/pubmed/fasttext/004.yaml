@@ -1,0 +1,38 @@
+experiment_name: "002_svc"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/train"
+  test:   "pubmed20k/test"
+  label_column: "label"
+  labels: ['BACKGROUND','RESULTS','CONCLUSIONS','METHODS','OBJECTIVE']
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: false
+    lemma: false
+    stem: false
+  params:
+    vector_size: 300
+    window: 5
+    min_count: 1
+    epochs: 50
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 100
+    C: 1
+    grid_search: false
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/fasttext/004_300dim_svc"

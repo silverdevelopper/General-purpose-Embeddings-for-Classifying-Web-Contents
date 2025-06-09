@@ -1,0 +1,41 @@
+experiment_name: "002_xgb_"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20news/20_newsgroups_train"
+  test: "20news/20_newsgroups_test"
+  label_column: "label"
+  labels: ['alt.atheism','comp.graphics','comp.os.mswindows.misc','comp.sys.ibm.pc.hardware','comp.sys.mac.hardware','comp.windows.x','misc.forsale','rec.autos','rec.motorcycles','rec.sport.baseball','rec.sport.hockey','sci.crypt','sci.electronics','sci.med','sci.space','soc.religion.christian','talk.politics.guns','talk.politics.mideast','talk.politics.misc','talk.religion.misc']
+
+embeddings:
+  type: "doc2vec"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params: 
+    vector_size: 300  # Reduced from 1000 - 300 is often sufficient and more efficient
+    window: 8  # Slightly larger window to capture more context
+    min_count: 5  # Increased to focus on more meaningful words
+    epochs: 30  # Increased for better convergence
+    dm: 0  # Added - use PV-DM (Distributed Memory) model (1) or PV-DBOW (0)
+    pre_process:
+      lower: true
+      remove_punctuation: true
+      remove_stopwords: true
+      remove_numbers: false  
+      remove_special_characters: true
+      remove_extra_whitespace: true
+      lemmatize: true
+      stem: false  
+
+model:
+  classifier: "XGBClassifier"  
+  params:
+    learning_rate: 0.1
+    max_depth: 3
+    n_estimators: 500
+    num_class: 20
+    eval_metric: "mlogloss" 
+    objective: "multi:softmax"
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/20news/doc2vec/002_xgb"

@@ -1,0 +1,37 @@
+experiment_name: "009_matroyushka_256_scalar_quantized_lr_"
+
+dataset:
+  name:   "pubmed20k"
+  train:  "pubmed20k/256/scalar/train_scalar_256"
+  test:   "pubmed20k/256/scalar/test_scalar_256"
+  label_column: "label"
+  labels: ['METHODS','RESULTS','CONCLUSIONS','BACKGROUND','OBJECTIVE']
+
+embeddings:
+  type: "jina"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  truncate_dim: 256
+  quantization: scalar # int8
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: true
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    dummty: yes
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 5000
+    random_state: 42
+    C: 0.9
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed20k/jina/256/009_matroyushka_256_scalar_quantized_lr_"

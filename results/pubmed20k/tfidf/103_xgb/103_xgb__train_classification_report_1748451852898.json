@@ -1,0 +1,56 @@
+{
+    "0": {
+        "precision": 0.6341023450109181,
+        "recall": 0.6148110645740323,
+        "f1-score": 0.6243077138784381,
+        "support": 21727.0
+    },
+    "1": {
+        "precision": 0.8551333900950759,
+        "recall": 0.8318637516608286,
+        "f1-score": 0.8433380857000411,
+        "support": 57953.0
+    },
+    "2": {
+        "precision": 0.7314707345382192,
+        "recall": 0.6495141342756183,
+        "f1-score": 0.6880605162598455,
+        "support": 27168.0
+    },
+    "3": {
+        "precision": 0.7965744091661661,
+        "recall": 0.9159941367748892,
+        "f1-score": 0.8521206231779568,
+        "support": 59353.0
+    },
+    "4": {
+        "precision": 0.7304118164922234,
+        "recall": 0.5395621070886625,
+        "f1-score": 0.6206466627877982,
+        "support": 13839.0
+    },
+    "accuracy": 0.7834203510331037,
+    "macro avg": {
+        "precision": 0.7495385390605205,
+        "recall": 0.7103490388748062,
+        "f1-score": 0.725694720360816,
+        "support": 180040.0
+    },
+    "weighted avg": {
+        "precision": 0.7809072092748378,
+        "recall": 0.7834203510331037,
+        "f1-score": 0.7792522683823616,
+        "support": 180040.0
+    },
+    "roc_auc": null,
+    "model": "XGBClassifier",
+    "params": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "n_estimators": 500,
+        "num_class": 5,
+        "eval_metric": "mlogloss",
+        "objective": "multi:softmax"
+    },
+    "mode": "training"
+}

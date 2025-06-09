@@ -1,0 +1,25 @@
+experiment_name: "04_patent_xs_pre_trained_fasttext_LR"
+
+dataset:
+  name: "patent_xs_abstract"
+  train: "patent_xs_abstract_train"
+  test: "patent_xs_abstract_test"
+  label_column: "label"
+  labels: ['a','b','c','d','e','f','g','h','y']
+
+embeddings:
+  type: "fasttext"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params:
+    pre_trained: true
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 1000
+    C: 100
+    grid_search: false
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/01_patent_xs_pre_trained_fasttext_LR"

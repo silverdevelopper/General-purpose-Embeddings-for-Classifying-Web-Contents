@@ -1,0 +1,16 @@
+{
+    "training_time_seconds": 40.960569858551025,
+    "memory_usage_mb": 726.52734375,
+    "documents_per_second": 2929.6467411072535,
+    "model_parameters": {
+        "max_features": 20000,
+        "ngram_range": [
+            1,
+            5
+        ]
+    },
+    "dataset_stats": {
+        "num_documents": 120000
+    },
+    "timestamp": "2025-05-25 15:12:37"
+}

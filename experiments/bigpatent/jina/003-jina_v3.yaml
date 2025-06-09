@@ -1,0 +1,41 @@
+experiment_name: "003_scalar_quantized_1024_lr_"
+
+dataset:
+  name: "patent"
+  train: "patent/1024/scalar/patent_train_scalar_1024"
+  test: "patent/1024/scalar/patent_test_scalar_1024"
+  label_column: "label"
+  labels: ['a','b','c','d','e','f','g','h','y']
+
+embeddings:
+  type: "jina"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  truncate_dim: 1024
+  quantization: scalar # int8
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: false
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    dummty: yes
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 1500
+    random_state: 42
+    penalty: 'l2'
+    solver: 'lbfgs'
+    C: 0.7
+    #tol: 0.00001
+    
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/patentsmall/jina/1024/003_scalar_quantized_1024_lr"

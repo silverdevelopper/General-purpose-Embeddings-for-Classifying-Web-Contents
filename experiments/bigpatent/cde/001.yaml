@@ -1,0 +1,36 @@
+experiment_name: "001_lr_"
+
+dataset:
+  name:   "patent"
+  train:  "patent/patent_train"
+  test:   "patent/patent_test"
+  label_column: "label"
+  labels: ['a','b','c','d','e','f','g','h','y']
+
+embeddings:
+  type: "cde"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  pre_process:
+    lower: false
+    remove_punctuation: false
+    remove_stopwords: false
+    remove_numbers: false
+    remove_special_characters: false
+    remove_extra_whitespace: true
+    lemma: false
+    stem: true
+  # Note that: Emeddings are normalized to unit length
+  params: 
+    dummty: yes
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 2000
+    random_state: 42
+    C: 0.8
+    
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/patent/patentsmall/cde/001_lr"

@@ -1,0 +1,40 @@
+experiment_name: "104_svm_"
+
+dataset:
+  name:   "pubmed200k"
+  train:  "pubmed200k/train"
+  test:   "pubmed200k/test"
+  val:    "pubmed200k/val"
+  label_column: "label"
+  labels: ['METHODS','RESULTS','CONCLUSIONS','BACKGROUND','OBJECTIVE']
+
+embeddings:
+  type: "tfidf_cf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params: 
+    max_features: 15000
+    ngram_range: "1,5"
+    pre_process:
+      lower: true
+      remove_punctuation: true
+      remove_stopwords: true
+      remove_numbers: true
+      remove_special_characters: true
+      remove_extra_whitespace: false
+      lemmatize: true
+      stem: false
+
+
+model:
+  classifier: "SVM"  
+  params:
+    max_iter: 4000
+    random_state: 42
+    C: 1
+    grid_search: False
+    tol: 0.001
+    normalize: False
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/pubmed200k/tfidf_cf/104_svm"

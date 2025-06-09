@@ -1,0 +1,50 @@
+{
+    "0": {
+        "precision": 0.8465215082315454,
+        "recall": 0.8389473684210527,
+        "f1-score": 0.8427174200370077,
+        "support": 1900.0
+    },
+    "1": {
+        "precision": 0.9469026548672567,
+        "recall": 0.9573684210526315,
+        "f1-score": 0.95210677833028,
+        "support": 1900.0
+    },
+    "2": {
+        "precision": 0.8434118395926161,
+        "recall": 0.6973684210526315,
+        "f1-score": 0.7634687409968309,
+        "support": 1900.0
+    },
+    "3": {
+        "precision": 0.7397752808988765,
+        "recall": 0.8663157894736843,
+        "f1-score": 0.798060606060606,
+        "support": 1900.0
+    },
+    "accuracy": 0.84,
+    "macro avg": {
+        "precision": 0.8441528208975736,
+        "recall": 0.84,
+        "f1-score": 0.8390883863561812,
+        "support": 7600.0
+    },
+    "weighted avg": {
+        "precision": 0.8441528208975737,
+        "recall": 0.84,
+        "f1-score": 0.8390883863561811,
+        "support": 7600.0
+    },
+    "roc_auc": null,
+    "model": "SVM",
+    "params": {
+        "max_iter": 2000,
+        "random_state": 42,
+        "C": 0.7,
+        "grid_search": false,
+        "tol": 0.0005,
+        "normalize": true
+    },
+    "mode": "training"
+}

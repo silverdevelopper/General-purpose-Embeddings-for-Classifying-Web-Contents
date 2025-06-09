@@ -1,0 +1,25 @@
+experiment_name: "patent_xs_cde_v1_SVM"
+
+dataset:
+  name: "patent_xs_abstract"
+  train: "patent_xs_abstract_train"
+  test: "patent_xs_abstract_test"
+  label_column: "label"
+  labels: ['a','b','c','d','e','f','g','h','y']
+
+embeddings:
+  type: "cde"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    dummy: yes
+
+model:
+  classifier: "SVM"  
+  params:
+    grid_search: false
+    max_iter: 5000
+    C: 10
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results"

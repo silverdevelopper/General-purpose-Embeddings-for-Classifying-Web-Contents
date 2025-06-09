@@ -1,0 +1,31 @@
+experiment_name: "doc2vec_20news_20_category_LR"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20_newsgroups_train"
+  test: "20_newsgroups_test"
+  label_column: "label"
+  categories:  ['alt.atheism','comp.graphics','comp.os.ms-windows.misc','comp.sys.ibm.pc.hardware','comp.sys.mac.hardware','comp.windows.x','misc.forsale','rec.autos','rec.motorcycles','rec.sport.baseball','rec.sport.hockey','sci.crypt','sci.electronics','sci.med','sci.space','soc.religion.christian','talk.politics.guns','talk.politics.mideast','talk.politics.misc','talk.religion.misc']
+
+embeddings:
+  type: "doc2vec"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    vector_size: 1000
+    window: 5
+    min_count: 3
+    epochs: 20
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    # learning_rate: 0.1
+    # max_depth: 7
+    # n_estimators: 50
+    # num_class: 20
+    # eval_metric: "mlogloss" 
+    # objective: "multi:softmax"
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results"

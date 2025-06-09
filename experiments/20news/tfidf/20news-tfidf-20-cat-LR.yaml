@@ -1,0 +1,24 @@
+experiment_name: "20_news_20_category_LR"
+
+dataset:
+  name: "20_newsgroups"
+  train: "20_newsgroups_train"
+  test: "20_newsgroups_test"
+  label_column: "label"
+  categories:  ['alt.atheism','comp.graphics','comp.os.ms-windows.misc','comp.sys.ibm.pc.hardware','comp.sys.mac.hardware','comp.windows.x','misc.forsale','rec.autos','rec.motorcycles','rec.sport.baseball','rec.sport.hockey','sci.crypt','sci.electronics','sci.med','sci.space','soc.religion.christian','talk.politics.guns','talk.politics.mideast','talk.politics.misc','talk.religion.misc']
+
+embeddings:
+  type: "tfidf"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  params: 
+    max_features: null
+    ngram_range: "1,6"
+
+model:
+  classifier: "LogisticRegression"  
+  params:
+    max_iter: 100
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results"

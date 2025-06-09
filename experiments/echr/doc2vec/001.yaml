@@ -1,0 +1,39 @@
+experiment_name: "001_lr"
+
+dataset:
+  name:   "echr"
+  train:  "echr/train"
+  test:   "echr/test"
+  label_column: "label"
+  labels: ["Violation", "No-violation"]
+
+embeddings:
+  type: "doc2vec"  # Options: doc2vec, fasttext, tfidf, tfidf_cf, huggingface
+  store_type: "npz"
+  params: 
+    vector_size: 1000
+    window: 5
+    min_count: 1
+    epochs: 40
+    dm: 0  # Added - use PV-DM (Distributed Memory) model (1) or PV-DBOW (0)
+  pre_process:
+    lower: true
+    remove_punctuation: true
+    remove_stopwords: true
+    remove_numbers: false  
+    remove_special_characters: true
+    remove_extra_whitespace: true
+    lemmatize: true
+    stem: false  
+
+model:
+  classifier: "LogisticRegression"  
+  params: 
+    max_iter: 1500
+    C: 0.7
+
+
+output:
+  embeddings_path: "data/embeddings"
+  model_save_path: "models/"
+  results_path: "results/echr/doc2vec/001_lr"

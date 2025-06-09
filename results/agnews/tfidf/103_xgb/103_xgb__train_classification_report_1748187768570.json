@@ -1,0 +1,50 @@
+{
+    "0": {
+        "precision": 0.9157802659202239,
+        "recall": 0.8724333333333333,
+        "f1-score": 0.8935814271082281,
+        "support": 30000.0
+    },
+    "1": {
+        "precision": 0.9177305867744914,
+        "recall": 0.9608333333333333,
+        "f1-score": 0.9387874741487404,
+        "support": 30000.0
+    },
+    "2": {
+        "precision": 0.8744306207084098,
+        "recall": 0.8574666666666667,
+        "f1-score": 0.8658655626241206,
+        "support": 30000.0
+    },
+    "3": {
+        "precision": 0.8513385414964207,
+        "recall": 0.8681666666666666,
+        "f1-score": 0.8596702589408017,
+        "support": 30000.0
+    },
+    "accuracy": 0.889725,
+    "macro avg": {
+        "precision": 0.8898200037248865,
+        "recall": 0.889725,
+        "f1-score": 0.8894761807054726,
+        "support": 120000.0
+    },
+    "weighted avg": {
+        "precision": 0.8898200037248865,
+        "recall": 0.889725,
+        "f1-score": 0.8894761807054727,
+        "support": 120000.0
+    },
+    "roc_auc": null,
+    "model": "XGBClassifier",
+    "params": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "n_estimators": 500,
+        "num_class": 20,
+        "eval_metric": "mlogloss",
+        "objective": "multi:softmax"
+    },
+    "mode": "training"
+}
